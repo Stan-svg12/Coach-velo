@@ -131,7 +131,29 @@
    "duree": "50 min",
    "contenu": "175-205 W, plafond FC 148 bpm",
    "date": "2026-11-23",
-   "fin": "2026-11-23"
+   "fin": "2026-11-23",
+   "objectif": "Base aérobie sous LT1, sans dérive cardiaque.",
+   "etapes": [
+    [
+     "10 min",
+     "Échauffement",
+     "150 → 175 W progressif"
+    ],
+    [
+     "35 min",
+     "Z2",
+     "185-200 W · FC ≤ 148 · cadence 85-95"
+    ],
+    [
+     "5 min",
+     "Retour au calme",
+     "140 W"
+    ]
+   ],
+   "conseils": [
+    "La FC commande : au-dessus de 148 bpm, baisse de 5-10 W.",
+    "Vise une dérive FC < 5 % entre la 1re et la 2e moitié."
+   ]
   },
   {
    "jour": "Mar 24 nov",
@@ -139,7 +161,49 @@
    "duree": "50 min",
    "contenu": "3×12 min @245-260 W, 3 min récup",
    "date": "2026-11-24",
-   "fin": "2026-11-24"
+   "fin": "2026-11-24",
+   "objectif": "Volume au seuil bas — 36 min de travail utile.",
+   "etapes": [
+    [
+     "8 min",
+     "Échauffement",
+     "150 → 200 W + 2×30 s @280 W"
+    ],
+    [
+     "12 min",
+     "SST 1",
+     "245-250 W · FC 158-170 · cadence 88-95"
+    ],
+    [
+     "3 min",
+     "Récup",
+     "150 W"
+    ],
+    [
+     "12 min",
+     "SST 2",
+     "250-255 W"
+    ],
+    [
+     "3 min",
+     "Récup",
+     "150 W"
+    ],
+    [
+     "12 min",
+     "SST 3",
+     "255-260 W"
+    ],
+    [
+     "3 min",
+     "Retour au calme",
+     "130 W"
+    ]
+   ],
+   "conseils": [
+    "Négatif : chaque bloc 5 W au-dessus du précédent.",
+    "Si FC > 172 au bloc 3, reste à 250 W."
+   ]
   },
   {
    "jour": "Jeu 26 nov",
@@ -147,7 +211,60 @@
    "duree": "50 min",
    "contenu": "4×4 min @290-298 W, 4 min récup @160 W, cadence 95-105",
    "date": "2026-11-26",
-   "fin": "2026-11-26"
+   "fin": "2026-11-26",
+   "objectif": "Relever le plafond VO2 — ton point faible actuel.",
+   "etapes": [
+    [
+     "12 min",
+     "Échauffement",
+     "150 → 200 W + 2×1 min @300 W"
+    ],
+    [
+     "4 min",
+     "VO2 1",
+     "290 W · cadence 95-105"
+    ],
+    [
+     "4 min",
+     "Récup",
+     "160 W"
+    ],
+    [
+     "4 min",
+     "VO2 2",
+     "292 W"
+    ],
+    [
+     "4 min",
+     "Récup",
+     "160 W"
+    ],
+    [
+     "4 min",
+     "VO2 3",
+     "295 W"
+    ],
+    [
+     "4 min",
+     "Récup",
+     "160 W"
+    ],
+    [
+     "4 min",
+     "VO2 4",
+     "295-298 W"
+    ],
+    [
+     "5 min",
+     "Retour au calme",
+     "130 W"
+    ]
+   ],
+   "conseils": [
+    "Pars au bas de la fourchette, finis au haut. Jamais l'inverse.",
+    "FC attendue > 180 en fin de rép 3-4. Si tu exploses avant 3 min, baisse de 5 W.",
+    "ERG off, ventilateur à fond."
+   ]
   },
   {
    "jour": "Week-end",
@@ -155,7 +272,34 @@
    "duree": "90 min +",
    "contenu": "Z2 FC < 148 bpm + 8×10 s sprints",
    "date": "2026-11-28",
-   "fin": "2026-11-29"
+   "fin": "2026-11-29",
+   "objectif": "Endurance longue + puissance neuromusculaire.",
+   "etapes": [
+    [
+     "15 min",
+     "Échauffement",
+     "150 → 185 W"
+    ],
+    [
+     "60-120 min",
+     "Z2",
+     "FC < 148 · 180-200 W"
+    ],
+    [
+     "8 × 10 s",
+     "Sprints",
+     "Toutes les 10 min, max, 4 assis / 4 debout"
+    ],
+    [
+     "10 min",
+     "Retour au calme",
+     "Souple"
+    ]
+   ],
+   "conseils": [
+    "Nutrition : 60 g glucides/h dès la 1re heure.",
+    "Hydratation : 500-750 ml/h."
+   ]
   }
  ],
  "seances": [

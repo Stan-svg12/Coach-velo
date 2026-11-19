@@ -25,6 +25,14 @@ html,body{margin:0;background:var(--color-bg);color:var(--color-fg);font:14px/1.
 .cv-today .tc{font-size:16px;font-variant-numeric:tabular-nums}
 .cv-today .tn{font-size:13px;color:var(--color-fg-muted)}
 .cv-today.is-done{border-left-color:var(--color-ok)}.cv-today.is-rest{border-left-color:var(--color-fg-muted)}
+.cv-todaywrap{display:grid;align-items:start;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--cds-gap-md)}
+.cv-today.is-next{border-left-color:var(--color-warn)}
+.cv-steps{display:flex;flex-direction:column;margin-top:6px;border-top:1px solid var(--color-border-line)}
+.cv-steps .st{display:grid;grid-template-columns:78px 120px 1fr;gap:10px;padding:7px 0;border-bottom:1px solid var(--color-border-line);font-size:13px;font-variant-numeric:tabular-nums}
+.cv-steps .sd{color:var(--color-fg-muted);white-space:nowrap}.cv-steps .sl{font-weight:600}
+@media (max-width:480px){.cv-steps .st{grid-template-columns:70px 1fr}.cv-steps .sc{grid-column:2}}
+.cv-tips{margin:6px 0 0;padding-left:1.1em;font-size:13px;display:flex;flex-direction:column;gap:4px}
+.cv-today .tg{font-size:12px;color:var(--color-fg-muted);margin-top:4px}
 .cv-foot{margin-top:36px;font-size:12px;color:var(--color-fg-muted)}
 @media (max-width:520px){:root{--cds-font-size-title:28px}.cv-big{font-size:2.1rem!important}}
 </style>
@@ -84,7 +92,7 @@ window.addEventListener('DOMContentLoaded',()=>fetch('data.json?v='+Date.now()).
 </style>
 
 <div class="cv">
-  <section class="cv-today" id="seance-du-jour" data-draw="today"></section>
+  <section class="cv-todaywrap" id="seance-du-jour" data-draw="today"></section>
 
   <header class="cv-head" id="entete">
     <span class="cv-eyebrow">Bloc hiver · 23 nov → 17 jan · test FTP jeudi 14 jan</span>
@@ -345,27 +353,33 @@ dash.draw('today', (el) => {
   const now = new Date();
   const iso = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
   const lbl = now.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
-  const add = (cls, txt) => { const e = document.createElement('div'); e.className = cls; e.textContent = txt; el.append(e); };
-  const plan = (p.data || []).find((r) => r.date && iso >= r.date && iso <= (r.fin || r.date));
+  const mk = (tag, cls, txt, parent) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; (parent || el).append(e); return e; };
+  const rows = (p.data || []).slice().sort((a, b) => a.date.localeCompare(b.date));
+  const plan = rows.find((r) => iso >= r.date && iso <= (r.fin || r.date));
   const done = (h.data || []).find((r) => r.date === iso);
-  el.classList.remove('is-done', 'is-rest');
+  const next = rows.find((r) => r.date > iso && r !== plan);
+  const detail = (box, r) => {
+    if (r.objectif) mk('div', 'tn', r.objectif, box);
+    if (r.etapes) {
+      const t = mk('div', 'cv-steps', null, box);
+      r.etapes.forEach(([dur, lab, cib]) => { const row = mk('div', 'st', null, t); mk('span', 'sd', dur, row); mk('span', 'sl', lab, row); mk('span', 'sc', cib, row); });
+    }
+    if (r.conseils) { const ul = mk('ul', 'cv-tips', null, box); r.conseils.forEach((c) => mk('li', null, c, ul)); }
+  };
+  const card = (cls, tt, title, sub) => { const c = mk('div', 'cv-today ' + cls); mk('div', 'tt', tt, c); mk('div', 'ts', title, c); if (sub) mk('div', 'tc', sub, c); return c; };
   if (done) {
-    el.classList.add('is-done');
-    add('tt', 'Séance du jour · ' + lbl + ' · faite');
-    add('ts', done.type);
-    add('tc', done.puissance + (done.fc ? ' · FC ' + done.fc : ''));
-    if (done.note) add('tn', done.note);
+    const c = card('is-done', 'Séance du jour · ' + lbl + ' · faite', done.type, done.puissance + (done.fc ? ' · FC ' + done.fc : ''));
+    if (done.note) mk('div', 'tn', done.note, c);
   } else if (plan) {
-    add('tt', 'Séance du jour · ' + lbl);
-    add('ts', plan.seance + ' · ' + plan.duree);
-    add('tc', plan.contenu);
-    add('tn', 'Feu vert VFC : < 50 repos · 50-54 Z2 seulement · ≥ 55 séance prévue');
+    const c = card('', 'Séance du jour · ' + lbl, plan.seance + ' · ' + plan.duree, plan.contenu);
+    detail(c, plan);
+    mk('div', 'tg', 'VFC du matin : < 50 repos · 50-54 Z2 seulement · ≥ 55 séance prévue', c);
   } else {
-    el.classList.add('is-rest');
-    const next = (p.data || []).filter((r) => r.date > iso).sort((a, b) => a.date.localeCompare(b.date))[0];
-    add('tt', 'Séance du jour · ' + lbl);
-    add('ts', 'Repos');
-    if (next) add('tc', 'Prochaine : ' + next.jour + ' — ' + next.seance + ' · ' + next.duree);
+    card('is-rest', 'Séance du jour · ' + lbl, 'Repos');
+  }
+  if (next) {
+    const c = card('is-next', 'Prochaine séance · ' + next.jour, next.seance + ' · ' + next.duree, next.contenu);
+    detail(c, next);
   }
 });
 </script>
