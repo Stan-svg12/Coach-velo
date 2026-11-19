@@ -129,25 +129,33 @@
    "jour": "Lun 23 nov",
    "seance": "Z2",
    "duree": "50 min",
-   "contenu": "175-205 W, plafond FC 148 bpm"
+   "contenu": "175-205 W, plafond FC 148 bpm",
+   "date": "2026-11-23",
+   "fin": "2026-11-23"
   },
   {
    "jour": "Mar 24 nov",
    "seance": "SST",
    "duree": "50 min",
-   "contenu": "3×12 min @245-260 W, 3 min récup"
+   "contenu": "3×12 min @245-260 W, 3 min récup",
+   "date": "2026-11-24",
+   "fin": "2026-11-24"
   },
   {
    "jour": "Jeu 26 nov",
    "seance": "VO2 max",
    "duree": "50 min",
-   "contenu": "4×4 min @290-298 W, 4 min récup @160 W, cadence 95-105"
+   "contenu": "4×4 min @290-298 W, 4 min récup @160 W, cadence 95-105",
+   "date": "2026-11-26",
+   "fin": "2026-11-26"
   },
   {
    "jour": "Week-end",
    "seance": "Z2 long",
    "duree": "90 min +",
-   "contenu": "Z2 FC < 148 bpm + 8×10 s sprints"
+   "contenu": "Z2 FC < 148 bpm + 8×10 s sprints",
+   "date": "2026-11-28",
+   "fin": "2026-11-29"
   }
  ],
  "seances": [
