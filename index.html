@@ -17,18 +17,20 @@
 html,body{margin:0;background:var(--color-bg);color:var(--color-fg);font:14px/1.45 var(--font-anthropic-sans)}
 #dash-root{max-width:1100px;margin:0 auto;padding-block:32px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 [hidden]{display:none!important}
+#bloc-hiver table,#historique table{min-width:680px}
+.cv-kpis{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))!important}
 .cv-foot{margin-top:36px;font-size:12px;color:var(--color-fg-muted)}
 @media (max-width:520px){:root{--cds-font-size-title:28px}.cv-big{font-size:2.1rem!important}}
 </style>
 <script>
 (function(){
-const RAW={"ftp": [{"date": "2026-05-01", "ftp": 251, "wkg": 3.01, "kind": "test", "label": "Point de départ"}, {"date": "2026-05-27", "ftp": 258, "wkg": 3.1, "kind": "test", "label": "Test 27 mai"}, {"date": "2026-07-08", "ftp": 262, "wkg": 3.16, "kind": "test", "label": "Test 8 juil"}, {"date": "2026-11-19", "ftp": 279, "wkg": 3.36, "kind": "test", "label": "Test 19 nov"}, {"date": "2027-01-14", "ftp": 290, "wkg": 3.58, "kind": "objectif", "label": "Objectif test 14 jan (81 kg)"}, {"date": "2027-04-15", "ftp": 305, "wkg": 3.77, "kind": "objectif", "label": "Objectif avril 2027"}, {"date": "2027-10-15", "ftp": 324, "wkg": 4.0, "kind": "objectif", "label": "Objectif 4 W/kg (81 kg)"}], "zones": [{"zone": "Z1", "nom": "Récupération", "pmin": 0, "pmax": 150, "fc": "< 135", "usage": "Retour au calme, récup entre intervalles"}, {"zone": "Z2", "nom": "Endurance", "pmin": 170, "pmax": 205, "fc": "≤ 148", "usage": "Base aérobie — la FC prime sur les watts"}, {"zone": "Z3", "nom": "Tempo", "pmin": 205, "pmax": 243, "fc": "148-166", "usage": "Zone grise, à limiter"}, {"zone": "SST", "nom": "Sweet Spot", "pmin": 245, "pmax": 260, "fc": "158-170", "usage": "88-93 % FTP — rendement maximal du temps"}, {"zone": "Z4", "nom": "Seuil", "pmin": 243, "pmax": 279, "fc": "166-177", "usage": "Blocs longs, Over-Under"}, {"zone": "Z5", "nom": "VO2 max", "pmin": 279, "pmax": 307, "fc": "177-187", "usage": "Point faible actuel — priorité du bloc"}, {"zone": "Z6", "nom": "Anaérobie", "pmin": 307, "pmax": 420, "fc": "> 187", "usage": "30\"/15\" hauts, sprints"}], "programme": [{"sem": "S1", "debut": "2026-11-23", "fin": "2026-11-29", "mardi": "SST 3×12 min @245-260 W", "jeudi": "VO2 4×4 min @290-298 W", "we": "Z2 long + sprints", "type": "Travail"}, {"sem": "S2", "debut": "2026-11-30", "fin": "2026-12-06", "mardi": "O/U 3×12 min (1′@305 / 3′@255 W)", "jeudi": "VO2 4×4 min @292-300 W", "we": "Z2 long + durabilité", "type": "Travail"}, {"sem": "S3", "debut": "2026-12-07", "fin": "2026-12-13", "mardi": "Seuil 3×12 min @265-275 W", "jeudi": "30\"/15\" 2×10 @305-315 W", "we": "Z2 long + sprints", "type": "Travail"}, {"sem": "S4", "debut": "2026-12-14", "fin": "2026-12-20", "mardi": "SST 3×15 min @250-260 W", "jeudi": "30\"/15\" 2×10 @310-315 W", "we": "Z2 long + durabilité", "type": "Travail"}, {"sem": "S5", "debut": "2026-12-21", "fin": "2026-12-27", "mardi": "Z2 + sprints 6×10 s", "jeudi": "Sprints courts", "we": "Z2 60 min", "type": "Décharge"}, {"sem": "S6", "debut": "2026-12-28", "fin": "2027-01-03", "mardi": "O/U 3×15 min", "jeudi": "30\"/15\" 3×10 @310-320 W", "we": "Z2 long + sprints", "type": "Travail"}, {"sem": "S7", "debut": "2027-01-04", "fin": "2027-01-10", "mardi": "Seuil 3×15 min @270-279 W", "jeudi": "30\"/15\" 3×12 @310-320 W", "we": "Z2 long + durabilité", "type": "Travail"}, {"sem": "S8", "debut": "2027-01-11", "fin": "2027-01-17", "mardi": "Activation", "jeudi": "TEST FTP 14 jan — viser 305 W/20 min", "we": "Récup", "type": "Test"}], "plan": [{"jour": "Lun 23 nov", "seance": "Z2", "duree": "50 min", "contenu": "175-205 W, plafond FC 148 bpm"}, {"jour": "Mar 24 nov", "seance": "SST", "duree": "50 min", "contenu": "3×12 min @245-260 W, 3 min récup"}, {"jour": "Jeu 26 nov", "seance": "VO2 max", "duree": "50 min", "contenu": "4×4 min @290-298 W, 4 min récup @160 W, cadence 95-105"}, {"jour": "Week-end", "seance": "Z2 long", "duree": "90 min +", "contenu": "Z2 FC < 148 bpm + 8×10 s sprints"}], "seances": [{"date": "2026-11-19", "type": "Test FTP", "puissance": "~294 W / 20 min", "fc": "197 max", "tss": null, "note": "FTP ~279 W (284/291/302/295 W) — sprint final à 340 W trop tôt"}, {"date": "2026-11-17", "type": "Activation", "puissance": "3×1 min @300 W", "fc": "129", "tss": 40, "note": "Facile, FC max 170"}, {"date": "2026-11-16", "type": "Z2", "puissance": "191 W", "fc": "150", "tss": 70, "note": "FC haute, exclue de l'analyse"}, {"date": "2026-10-27", "type": "SST", "puissance": "255 W", "fc": "160", "tss": 120, "note": "Malade, non représentatif"}, {"date": "2026-10-26", "type": "Z2", "puissance": "203-205 W", "fc": "142", "tss": 60, "note": "60 % en Z3 — au-dessus de LT1"}, {"date": "2026-10-20", "type": "Over-Under", "puissance": "295-305 / 242-252 W", "fc": "153", "tss": 130, "note": "Hauts au-dessus du seuil"}, {"date": "2026-10-11", "type": "Z2 long", "puissance": "—", "fc": "177", "tss": 314, "note": "Longchamp 38 km @35.5 km/h"}, {"date": "2026-09-23", "type": "Over-Under", "puissance": "280-295 / 240-250 W", "fc": "152", "tss": 130, "note": "52 % Z4 — signal FTP > 262 W"}, {"date": "2026-09-15", "type": "VO2 max", "puissance": "290-300 W", "fc": "154", "tss": 145, "note": "51 % Z4 — VFC 65"}, {"date": "2026-09-08", "type": "Z2", "puissance": "194 W", "fc": "133", "tss": 39, "note": "LT1 ~195-200 W confirmé"}, {"date": "2026-08-18", "type": "Z2 long", "puissance": "~200 W", "fc": "144", "tss": 218, "note": "110 km Arzon, 1055 m D+"}, {"date": "2026-07-08", "type": "Test FTP", "puissance": "258-265 W", "fc": "164", "tss": 165, "note": "FTP 262 W"}, {"date": "2026-05-27", "type": "Test FTP", "puissance": "272 W / 20 min", "fc": "191", "tss": 300, "note": "FTP 258 W"}]};const calcs={};const draws=[];
+let RAW={};const calcs={};const draws=[];
 window.dash={colors:['var(--accent)','#8a5cf6','#e07b39'],
 data(id){if(calcs[id]){const c=calcs[id];const v=c.fn(...c.inputs.map(i=>RAW[i]));return{status:'ok',data:v}}return RAW[id]?{status:'ok',data:RAW[id]}:{status:'missing',data:[]}},
 calc(id,o){calcs[id]=o},onData(fn){fn()},params(){return{}},setParams(){},
 draw(name,fn){draws.push([name,fn])}};
 function run(){draws.forEach(([n,fn])=>document.querySelectorAll('[data-draw="'+n+'"]').forEach(el=>{try{fn(el)}catch(e){console.error(n,e)}}))}
-window.addEventListener('DOMContentLoaded',run);let t;window.addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(run,150)});
+window.addEventListener('DOMContentLoaded',()=>fetch('data.json?v='+Date.now()).then(r=>r.json()).then(d=>{RAW=d;const m=document.getElementById('maj');if(m&&d.maj)m.textContent=new Date(d.maj+'T12:00').toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'});run()}).catch(e=>{document.getElementById('dash-root').insertAdjacentHTML('afterbegin','<p>Impossible de charger les données.</p>')}));let t;window.addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(run,150)});
 })();
 </script></head><body><div id="dash-root">
 <style>
@@ -105,6 +107,18 @@ window.addEventListener('DOMContentLoaded',run);let t;window.addEventListener('r
     </div>
   </section>
 
+<div>
+    <section class="cv-section" id="semaine">
+      <h2>Semaine du 23 novembre</h2>
+      <div class="cv-scroll">
+        <table data-source="plan" data-row-key="jour" aria-label="Plan de la semaine">
+          <thead><tr><th data-field="jour">Jour</th><th data-field="seance">Séance</th><th data-field="duree">Durée</th><th data-field="contenu">Contenu</th></tr></thead>
+          <tbody data-draw="plan-rows"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
   <section class="cv-section" id="progression-ftp">
     <h2>Progression FTP et objectifs</h2>
     <div class="cv-chart" data-draw="ftp-chart" data-source="ftp"></div>
@@ -122,44 +136,9 @@ window.addEventListener('DOMContentLoaded',run);let t;window.addEventListener('r
     </div>
   </section>
 
-  <div class="cv-grid2">
-    <section class="cv-section" id="semaine">
-      <h2>Semaine du 23 novembre</h2>
-      <div class="cv-scroll">
-        <table data-source="plan" data-row-key="jour" aria-label="Plan de la semaine">
-          <thead><tr><th data-field="jour">Jour</th><th data-field="seance">Séance</th><th data-field="duree">Durée</th><th data-field="contenu">Contenu</th></tr></thead>
-          <tbody data-draw="plan-rows"></tbody>
-        </table>
-      </div>
-    </section>
-    <section class="cv-section" id="vfc">
-      <h2>Feu vert VFC du matin</h2>
-      <div class="cv-gate">
-        <div class="g-bad"><b>&lt; 50</b><span class="cv-sub">Repos</span></div>
-        <div class="g-warn"><b>50-54</b><span class="cv-sub">Z2 uniquement</span></div>
-        <div><b>55-59</b><span class="cv-sub">Séance prévue</span></div>
-        <div class="g-ok"><b>≥ 60</b><span class="cv-sub">Forme, intensité max</span></div>
-      </div>
-      <ul class="cv-rules">
-        <li>VO2 : partir au bas de la fourchette, finir au haut. Jamais l'inverse.</li>
-        <li>Z2 : la FC commande. Au-delà de 148 bpm, baisser les watts.</li>
-        <li>Test : départ 5 W sous la cible, accélérer seulement dans les 3 dernières minutes.</li>
-      </ul>
-    </section>
-  </div>
-
-  <section class="cv-section" id="zones">
-    <h2>Zones — FTP 279 W, FC max 197</h2>
-    <div class="cv-scroll">
-      <table data-source="zones" data-row-key="zone" aria-label="Zones d'entraînement">
-        <thead><tr><th data-field="zone">Zone</th><th data-field="nom">Nom</th><th class="num" data-field="pmin">Min W</th><th class="num" data-field="pmax">Max W</th><th>Plage</th><th data-field="fc">FC bpm</th><th data-field="usage">Usage</th></tr></thead>
-        <tbody data-draw="zone-rows"></tbody>
-      </table>
-    </div>
-  </section>
-
   <section class="cv-section" id="historique">
     <h2>Séances clés</h2>
+    <p class="cv-note">Les plus récentes en premier.</p>
     <div class="cv-scroll">
       <table data-source="seances" data-row-key="date" aria-label="Historique des séances">
         <thead><tr><th data-field="date">Date</th><th data-field="type">Séance</th><th data-field="puissance">Puissance</th><th class="num" data-field="fc">FC</th><th class="num" data-field="tss">TSS</th><th data-field="note">Note</th></tr></thead>
@@ -351,5 +330,5 @@ dash.draw('ftp-chart', (el) => {
   });
 })();
 </script>
-<p class="cv-foot">Données au 19 novembre 2026 · FTP = 95 % de la moyenne 20 min · 83 kg.</p>
+<p class="cv-foot">Mis à jour le <span id="maj">—</span> · FTP = 95 % de la moyenne 20 min · 83 kg.</p>
 </div></body></html>
