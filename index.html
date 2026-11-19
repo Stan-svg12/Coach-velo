@@ -124,6 +124,24 @@ html,body{background:#0b0d10}
 
 .cv,.cv td,.cv-steps .st{font-family:'Barlow',system-ui,-apple-system,sans-serif}
 #bloc-hiver td:nth-child(n+4)::before{flex-basis:76px!important}
+/* ===== Encarts cliquables ===== */
+.tap{cursor:pointer;position:relative;-webkit-tap-highlight-color:transparent}
+.tap::after{content:"";position:absolute;top:14px;right:14px;width:7px;height:7px;border-right:2px solid var(--color-fg-muted);border-bottom:2px solid var(--color-fg-muted);transform:rotate(45deg);transition:transform .2s}
+.tap.is-open::after{transform:rotate(-135deg);top:18px}
+.cv-today.tap::after{top:20px;right:18px}
+.cv-more{display:none!important;grid-column:1/-1;margin-top:8px;padding-top:10px;border-top:1px dashed var(--color-border-line)!important;font-size:13px;color:var(--color-fg);line-height:1.45}
+.tap.is-open>.cv-more,.tap.is-open>td.cv-more{display:block!important}
+.cv-more .mt{font-family:'Barlow Condensed',system-ui,sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:var(--accent);margin-bottom:6px}
+.cv-more p{margin:0;color:var(--color-fg-muted)}
+.cv-more ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:4px}
+.cv-more .kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:12px}
+.cv-more .kv span{color:var(--color-fg-muted)}.cv-more .kv b{font-family:'JetBrains Mono',ui-monospace,monospace;font-weight:500;text-align:right}
+.cv-card.is-open{grid-column:1/-1}
+#historique td:nth-child(6){display:none!important}
+#historique tr.is-open td:nth-child(6){display:block!important}
+.cv tr.tap::after{top:auto;bottom:14px}
+#bloc-hiver td.cv-more{color:var(--color-fg-muted)}
+.cv-card.tap .cv-label{padding-right:18px}.cv tr.tap td:nth-child(4){padding-right:22px!important}
 </style></head><body><div id="dash-root">
 <style>
 .cv { display: flex; flex-direction: column; gap: var(--cds-gap-xl); font-family: var(--font-anthropic-sans); color: var(--color-fg); }
@@ -179,25 +197,29 @@ html,body{background:#0b0d10}
   </header>
 
   <section class="cv-kpis" id="compteurs">
-    <div class="cv-card is-lead" id="kpi-dernier">
+    <div class="cv-card is-lead tap" id="kpi-dernier">
       <span class="cv-label">Depuis le dernier test</span>
       <span class="cv-big"><span data-draw="k-gain" data-source="progression" data-field="gain_dernier" data-row="0">—</span><small>W</small></span>
       <span class="cv-sub"><span data-draw="k-prev" data-source="progression" data-field="ftp_prev" data-row="0">—</span> W → <span data-draw="k-cur" data-source="progression" data-field="ftp_actuel" data-row="0">—</span> W · <span data-draw="k-mois" data-source="progression" data-field="mois_dernier" data-row="0">—</span> mois</span>
+      <div class="cv-more"><div class="mt">Historique des tests</div><div data-draw="k-tests"></div></div>
     </div>
-    <div class="cv-card is-lead" id="kpi-moyenne">
+    <div class="cv-card is-lead tap" id="kpi-moyenne">
       <span class="cv-label">Moyenne mensuelle depuis le début</span>
       <span class="cv-big"><span data-draw="k-moy" data-source="progression" data-field="gain_mois" data-row="0">—</span><small>W/mois</small></span>
       <span class="cv-sub"><span data-draw="k-tot" data-source="progression" data-field="gain_total" data-row="0">—</span> W (<span data-draw="k-dep" data-source="progression" data-field="ftp_depart" data-row="0">—</span> → <span data-draw="k-cur2" data-source="progression" data-field="ftp_actuel" data-row="0">—</span> W) · <span data-draw="k-moist" data-source="progression" data-field="mois_total" data-row="0">—</span> mois</span>
+      <div class="cv-more"><div class="mt">Calcul</div><p>Gain total divisé par le nombre de mois depuis le point de départ (1er mai, 251 W). Pour tenir l'objectif de 4 W/kg en octobre 2027, il faut garder environ 3 W/mois.</p></div>
     </div>
-    <div class="cv-card" id="kpi-ftp">
+    <div class="cv-card tap" id="kpi-ftp">
       <span class="cv-label">FTP actuelle</span>
       <span class="cv-big"><span data-draw="k-ftp" data-source="progression" data-field="ftp_actuel" data-row="0">—</span><small>W</small></span>
       <span class="cv-sub"><span data-draw="k-wkg" data-source="progression" data-field="wkg_actuel" data-row="0">—</span> W/kg · 83 kg · FC max 197</span>
+      <div class="cv-more"><div class="mt">Zones à 279 W</div><div class="kv"><span>Z2</span><b>170-205 W · FC ≤ 148</b><span>Tempo</span><b>205-243 W</b><span>SST</span><b>245-260 W</b><span>Seuil</span><b>243-279 W</b><span>VO2</span><b>279-307 W</b><span>Anaérobie</span><b>&gt; 307 W</b></div></div>
     </div>
-    <div class="cv-card" id="kpi-objectif">
+    <div class="cv-card tap" id="kpi-objectif">
       <span class="cv-label">Rythme requis pour le 14 jan</span>
       <span class="cv-big"><span data-draw="k-req" data-source="progression" data-field="rythme_requis" data-row="0">—</span><small>W/mois</small></span>
       <span class="cv-sub">Encore <span data-draw="k-reste" data-source="progression" data-field="gain_requis" data-row="0">—</span> W en <span data-draw="k-moisr" data-source="progression" data-field="mois_restants" data-row="0">—</span> mois · <span data-draw="k-verdict">—</span></span>
+      <div class="cv-more"><div class="mt">Leviers</div><ul><li>VO2 du jeudi : c'est ton point faible, donc le plus gros gisement.</li><li>Régularité : 3 séances par semaine, aucune sautée hors VFC rouge.</li><li>Poids : 81 kg au test = 3,58 W/kg à 290 W.</li></ul></div>
     </div>
   </section>
 
@@ -293,6 +315,14 @@ dash.calc('progression', {
       el.textContent = row && row[f] != null ? fm(row[f]) : '—';
     });
   });
+  dash.draw('k-tests', (el) => {
+    const d = dash.data('ftp'); el.replaceChildren();
+    if (d.status !== 'ok') { el.textContent = '—'; return; }
+    const t = d.data.filter((r) => r.kind === 'test').sort((a, b) => a.date.localeCompare(b.date));
+    const box = document.createElement('div'); box.className = 'kv';
+    t.forEach((r, i) => { const a = document.createElement('span'); a.textContent = r.label; const b = document.createElement('b'); b.textContent = r.ftp + ' W' + (i ? '  (' + d3.format('+d')(r.ftp - t[i - 1].ftp) + ')' : ''); box.append(a, b); });
+    el.append(box);
+  });
   dash.draw('k-verdict', (el) => {
     const p = dash.data('progression');
     const row = p.status === 'ok' && p.data && p.data[0];
@@ -364,8 +394,9 @@ dash.draw('ftp-chart', (el) => {
     d.data.forEach((r) => {
       const tr = document.createElement('tr');
       const s = parse(r.debut), e = new Date(parse(r.fin).getTime() + 86400000);
-      if (today >= s && today < e) tr.className = 'is-now';
-      else if (today >= e) tr.className = 'is-past';
+      tr.className = 'tap';
+      if (today >= s && today < e) tr.classList.add('is-now', 'is-open');
+      else if (today >= e) tr.classList.add('is-past');
       const cells = [r.sem, fd(s), null, r.mardi, r.jeudi, r.we];
       cells.forEach((c, i) => {
         const td = document.createElement('td');
@@ -373,6 +404,7 @@ dash.draw('ftp-chart', (el) => {
         else td.textContent = c;
         tr.append(td);
       });
+      if (r.focus) { const td = document.createElement('td'); td.className = 'cv-more'; td.textContent = r.focus; tr.append(td); }
       tb.append(tr);
     });
   });
@@ -383,6 +415,7 @@ dash.draw('ftp-chart', (el) => {
     d.data.forEach((r) => {
       const tr = document.createElement('tr');
       [r.jour, r.seance, r.duree, r.contenu].forEach((c) => { const td = document.createElement('td'); td.textContent = c; tr.append(td); });
+      if (r.etapes) { tr.classList.add('tap'); const td = document.createElement('td'); td.className = 'cv-more'; window.cvDetail(td, r); tr.append(td); }
       tb.append(tr);
     });
   });
@@ -415,7 +448,7 @@ dash.draw('ftp-chart', (el) => {
     if (d.status !== 'ok') return;
     d.data.slice().sort((a, b) => b.date.localeCompare(a.date)).forEach((r) => {
       const tr = document.createElement('tr');
-      tr.dataset.key = r.date;
+      tr.dataset.key = r.date; if (r.note) tr.classList.add('tap');
       [fdy(parse(r.date)), r.type, r.puissance, r.fc, r.tss == null ? '' : r.tss, r.note].forEach((c, j) => {
         const td = document.createElement('td'); if (j === 3 || j === 4) td.className = 'num'; td.textContent = c; tr.append(td);
       });
@@ -423,6 +456,15 @@ dash.draw('ftp-chart', (el) => {
     });
   });
 })();
+</script>
+<script>
+window.cvDetail = (box, r) => {
+  const mk = (tag, cls, txt, parent) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; parent.append(e); return e; };
+  if (r.objectif) mk('div', 'tn', r.objectif, box);
+  if (r.etapes) { const t = mk('div', 'cv-steps', null, box); r.etapes.forEach(([a, b, c]) => { const row = mk('div', 'st', null, t); mk('span', 'sd', a, row); mk('span', 'sl', b, row); mk('span', 'sc', c, row); }); }
+  if (r.conseils) { const ul = mk('ul', 'cv-tips', null, box); r.conseils.forEach((c) => mk('li', null, c, ul)); }
+};
+document.addEventListener('click', (e) => { if (e.target.closest('a,button')) return; const t = e.target.closest('.tap'); if (t) t.classList.toggle('is-open'); });
 </script>
 <script>
 dash.draw('today', (el) => {
@@ -456,8 +498,8 @@ dash.draw('today', (el) => {
     card('is-rest', 'Séance du jour · ' + lbl, 'Repos');
   }
   if (next) {
-    const c = card('is-next', 'Prochaine séance · ' + next.jour, next.seance + ' · ' + next.duree, next.contenu);
-    detail(c, next);
+    const c = card('is-next tap', 'Prochaine séance · ' + next.jour, next.seance + ' · ' + next.duree, next.contenu);
+    const m = mk('div', 'cv-more', null, c); detail(m, next);
   }
 });
 </script>

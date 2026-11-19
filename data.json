@@ -58,7 +58,8 @@
    "mardi": "SST 3×12 min @245-260 W",
    "jeudi": "VO2 4×4 min @290-298 W",
    "we": "Z2 long + sprints",
-   "type": "Travail"
+   "type": "Travail",
+   "focus": "Reprise après le test : installer la SST et la VO2 à 290 W. Volume ~4 h."
   },
   {
    "sem": "S2",
@@ -67,7 +68,8 @@
    "mardi": "O/U 3×12 min (1′@305 / 3′@255 W)",
    "jeudi": "VO2 4×4 min @292-300 W",
    "we": "Z2 long + durabilité",
-   "type": "Travail"
+   "type": "Travail",
+   "focus": "Augmenter le temps passé au-dessus du seuil avec l'Over-Under. VO2 +2 W."
   },
   {
    "sem": "S3",
@@ -76,7 +78,8 @@
    "mardi": "Seuil 3×12 min @265-275 W",
    "jeudi": "30\"/15\" 2×10 @305-315 W",
    "we": "Z2 long + sprints",
-   "type": "Travail"
+   "type": "Travail",
+   "focus": "Seuil franc à 265-275 W et première séance 30\"/15\". Semaine la plus dure du premier bloc."
   },
   {
    "sem": "S4",
@@ -85,7 +88,8 @@
    "mardi": "SST 3×15 min @250-260 W",
    "jeudi": "30\"/15\" 2×10 @310-315 W",
    "we": "Z2 long + durabilité",
-   "type": "Travail"
+   "type": "Travail",
+   "focus": "Volume SST maximal (45 min) et 30\"/15\" à 310 W. Fin du premier mésocycle."
   },
   {
    "sem": "S5",
@@ -94,7 +98,8 @@
    "mardi": "Z2 + sprints 6×10 s",
    "jeudi": "Sprints courts",
    "we": "Z2 60 min",
-   "type": "Décharge"
+   "type": "Décharge",
+   "focus": "Décharge de Noël : volume -40 %, intensité courte uniquement. L'adaptation se fait ici."
   },
   {
    "sem": "S6",
@@ -103,7 +108,8 @@
    "mardi": "O/U 3×15 min",
    "jeudi": "30\"/15\" 3×10 @310-320 W",
    "we": "Z2 long + sprints",
-   "type": "Travail"
+   "type": "Travail",
+   "focus": "Reprise de charge : Over-Under long 3×15 min et 30\"/15\" ×3."
   },
   {
    "sem": "S7",
@@ -112,7 +118,8 @@
    "mardi": "Seuil 3×15 min @270-279 W",
    "jeudi": "30\"/15\" 3×12 @310-320 W",
    "we": "Z2 long + durabilité",
-   "type": "Travail"
+   "type": "Travail",
+   "focus": "Pic de charge : seuil 3×15 min à 270-279 W. Dernière grosse semaine avant le test."
   },
   {
    "sem": "S8",
@@ -121,7 +128,8 @@
    "mardi": "Activation",
    "jeudi": "TEST FTP 14 jan — viser 305 W/20 min",
    "we": "Récup",
-   "type": "Test"
+   "type": "Test",
+   "focus": "Affûtage puis test jeudi 14 jan. Départ 290 W, viser 305 W de moyenne sur 20 min, soit FTP 290 W."
   }
  ],
  "plan": [
