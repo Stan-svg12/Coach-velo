@@ -312,6 +312,14 @@
  ],
  "seances": [
   {
+   "date": "2026-11-23",
+   "type": "Z2",
+   "puissance": "watts à compléter",
+   "fc": "119 (max 158)",
+   "tss": null,
+   "note": "FC moyenne très basse pour une Z2 — pic à 158 au-dessus du plafond 148"
+  },
+  {
    "date": "2026-11-19",
    "type": "Test FTP",
    "puissance": "~294 W / 20 min",
@@ -416,5 +424,5 @@
    "note": "FTP 258 W"
   }
  ],
- "maj": "2026-11-19"
+ "maj": "2026-11-23"
 }
