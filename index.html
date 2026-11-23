@@ -142,6 +142,8 @@ html,body{background:#0b0d10}
 .cv tr.tap::after{top:auto;bottom:14px}
 #bloc-hiver td.cv-more{color:var(--color-fg-muted)}
 .cv-card.tap .cv-label{padding-right:18px}.cv tr.tap td:nth-child(4){padding-right:22px!important}
+.cv-eq{opacity:.75;font-size:10.5px!important;margin-top:2px}
+.cv-big small{font-size:12px!important;white-space:nowrap}
 </style></head><body><div id="dash-root">
 <style>
 .cv { display: flex; flex-direction: column; gap: var(--cds-gap-xl); font-family: var(--font-anthropic-sans); color: var(--color-fg); }
@@ -193,32 +195,36 @@ html,body{background:#0b0d10}
   <header class="cv-head" id="entete">
     <span class="cv-eyebrow">Bloc hiver · 23 nov → 17 jan · test FTP jeudi 14 jan</span>
     <h1>Coach Vélo Stan</h1>
-    <p class="cv-lede" data-read lang="fr">FTP validée à <b data-draw="t-ftp" data-source="progression" data-field="ftp_actuel" data-row="0">—</b> W (<b data-draw="t-wkg" data-source="progression" data-field="wkg_actuel" data-row="0">—</b> W/kg) au dernier test. Pour viser <b data-draw="t-obj" data-source="progression" data-field="objectif" data-row="0">—</b> W au test du 14 janvier, il faut <b data-draw="t-req" data-source="progression" data-field="rythme_requis" data-row="0">—</b> W/mois, contre <b data-draw="t-moy" data-source="progression" data-field="gain_mois" data-row="0">—</b> W/mois de moyenne depuis mai.</p>
+    <p class="cv-lede" data-read lang="fr">FTP validée à <b><span data-draw="t-wkg" data-source="progression" data-field="wkg_actuel" data-row="0">—</span></b> W/kg (<span data-draw="t-ftp" data-source="progression" data-field="ftp_actuel" data-row="0">—</span> W) au dernier test. Pour viser <b><span data-draw="t-objw" data-source="progression" data-field="objectif_wkg" data-row="0">—</span></b> W/kg au test du 14 janvier, il faut <b><span data-draw="t-reqw" data-source="progression" data-field="rythme_requis_wkg" data-row="0">—</span></b> W/kg/mois, contre <b><span data-draw="t-moyw" data-source="progression" data-field="gain_mois_wkg" data-row="0">—</span></b> W/kg/mois de moyenne depuis mai.</p>
   </header>
 
   <section class="cv-kpis" id="compteurs">
     <div class="cv-card is-lead tap" id="kpi-dernier">
       <span class="cv-label">Depuis le dernier test</span>
-      <span class="cv-big"><span data-draw="k-gain" data-source="progression" data-field="gain_dernier" data-row="0">—</span><small>W</small></span>
-      <span class="cv-sub"><span data-draw="k-prev" data-source="progression" data-field="ftp_prev" data-row="0">—</span> W → <span data-draw="k-cur" data-source="progression" data-field="ftp_actuel" data-row="0">—</span> W · <span data-draw="k-mois" data-source="progression" data-field="mois_dernier" data-row="0">—</span> mois</span>
+      <span class="cv-big"><span data-draw="k-gainw" data-source="progression" data-field="gain_dernier_wkg" data-row="0">—</span><small>W/kg</small></span>
+      <span class="cv-sub"><span data-draw="k-prevw" data-source="progression" data-field="wkg_prev" data-row="0">—</span> → <span data-draw="k-curw" data-source="progression" data-field="wkg_actuel" data-row="0">—</span> W/kg · <span data-draw="k-mois" data-source="progression" data-field="mois_dernier" data-row="0">—</span> mois</span>
+      <span class="cv-sub cv-eq">Soit <span data-draw="k-gain" data-source="progression" data-field="gain_dernier" data-row="0">—</span> W (<span data-draw="k-prev" data-source="progression" data-field="ftp_prev" data-row="0">—</span> → <span data-draw="k-cur" data-source="progression" data-field="ftp_actuel" data-row="0">—</span> W)</span>
       <div class="cv-more"><div class="mt">Historique des tests</div><div data-draw="k-tests"></div></div>
     </div>
     <div class="cv-card is-lead tap" id="kpi-moyenne">
       <span class="cv-label">Moyenne mensuelle depuis le début</span>
-      <span class="cv-big"><span data-draw="k-moy" data-source="progression" data-field="gain_mois" data-row="0">—</span><small>W/mois</small></span>
-      <span class="cv-sub"><span data-draw="k-tot" data-source="progression" data-field="gain_total" data-row="0">—</span> W (<span data-draw="k-dep" data-source="progression" data-field="ftp_depart" data-row="0">—</span> → <span data-draw="k-cur2" data-source="progression" data-field="ftp_actuel" data-row="0">—</span> W) · <span data-draw="k-moist" data-source="progression" data-field="mois_total" data-row="0">—</span> mois</span>
-      <div class="cv-more"><div class="mt">Calcul</div><p>Gain total divisé par le nombre de mois depuis le point de départ (1er mai, 251 W). Pour tenir l'objectif de 4 W/kg en octobre 2027, il faut garder environ 3 W/mois.</p></div>
+      <span class="cv-big"><span data-draw="k-moyw" data-source="progression" data-field="gain_mois_wkg" data-row="0">—</span><small>W/kg/mois</small></span>
+      <span class="cv-sub"><span data-draw="k-totw" data-source="progression" data-field="gain_total_wkg" data-row="0">—</span> W/kg (<span data-draw="k-depw" data-source="progression" data-field="wkg_depart" data-row="0">—</span> → <span data-draw="k-cur2w" data-source="progression" data-field="wkg_actuel" data-row="0">—</span>) · <span data-draw="k-moist" data-source="progression" data-field="mois_total" data-row="0">—</span> mois</span>
+      <span class="cv-sub cv-eq">Soit <span data-draw="k-moy" data-source="progression" data-field="gain_mois" data-row="0">—</span> W/mois (<span data-draw="k-tot" data-source="progression" data-field="gain_total" data-row="0">—</span> W, <span data-draw="k-dep" data-source="progression" data-field="ftp_depart" data-row="0">—</span> → <span data-draw="k-cur2" data-source="progression" data-field="ftp_actuel" data-row="0">—</span> W)</span>
+      <div class="cv-more"><div class="mt">Calcul</div><p>Gain total divisé par le nombre de mois depuis le point de départ (1er mai, 251 W). Le W/kg intègre aussi l'évolution du poids : perdre 1 kg à 279 W vaut +0,04 W/kg.</p></div>
     </div>
     <div class="cv-card tap" id="kpi-ftp">
       <span class="cv-label">FTP actuelle</span>
-      <span class="cv-big"><span data-draw="k-ftp" data-source="progression" data-field="ftp_actuel" data-row="0">—</span><small>W</small></span>
-      <span class="cv-sub"><span data-draw="k-wkg" data-source="progression" data-field="wkg_actuel" data-row="0">—</span> W/kg · 83 kg · FC max 197</span>
+      <span class="cv-big"><span data-draw="k-wkg" data-source="progression" data-field="wkg_actuel" data-row="0">—</span><small>W/kg</small></span>
+      <span class="cv-sub">83 kg · FC max 197</span>
+      <span class="cv-sub cv-eq">Soit <span data-draw="k-ftp" data-source="progression" data-field="ftp_actuel" data-row="0">—</span> W</span>
       <div class="cv-more"><div class="mt">Zones à 279 W</div><div class="kv"><span>Z2</span><b>170-205 W · FC ≤ 148</b><span>Tempo</span><b>205-243 W</b><span>SST</span><b>245-260 W</b><span>Seuil</span><b>243-279 W</b><span>VO2</span><b>279-307 W</b><span>Anaérobie</span><b>&gt; 307 W</b></div></div>
     </div>
     <div class="cv-card tap" id="kpi-objectif">
       <span class="cv-label">Rythme requis pour le 14 jan</span>
-      <span class="cv-big"><span data-draw="k-req" data-source="progression" data-field="rythme_requis" data-row="0">—</span><small>W/mois</small></span>
-      <span class="cv-sub">Encore <span data-draw="k-reste" data-source="progression" data-field="gain_requis" data-row="0">—</span> W en <span data-draw="k-moisr" data-source="progression" data-field="mois_restants" data-row="0">—</span> mois · <span data-draw="k-verdict">—</span></span>
+      <span class="cv-big"><span data-draw="k-reqw" data-source="progression" data-field="rythme_requis_wkg" data-row="0">—</span><small>W/kg/mois</small></span>
+      <span class="cv-sub">Encore <span data-draw="k-restew" data-source="progression" data-field="gain_requis_wkg" data-row="0">—</span> W/kg (→ <span data-draw="k-objw" data-source="progression" data-field="objectif_wkg" data-row="0">—</span>) en <span data-draw="k-moisr" data-source="progression" data-field="mois_restants" data-row="0">—</span> mois · <span data-draw="k-verdict">—</span></span>
+      <span class="cv-sub cv-eq">Soit <span data-draw="k-req" data-source="progression" data-field="rythme_requis" data-row="0">—</span> W/mois (<span data-draw="k-reste" data-source="progression" data-field="gain_requis" data-row="0">—</span> W → <span data-draw="k-obj" data-source="progression" data-field="objectif" data-row="0">—</span> W, à 81 kg)</span>
       <div class="cv-more"><div class="mt">Leviers</div><ul><li>VO2 du jeudi : c'est ton point faible, donc le plus gros gisement.</li><li>Régularité : 3 séances par semaine, aucune sautée hors VFC rouge.</li><li>Poids : 81 kg au test = 3,58 W/kg à 290 W.</li></ul></div>
     </div>
   </section>
@@ -236,7 +242,7 @@ html,body{background:#0b0d10}
   </div>
 
   <section class="cv-section" id="progression-ftp">
-    <h2>Progression FTP et objectifs</h2>
+    <h2>Progression FTP (W/kg)</h2>
     <div class="cv-chart" data-draw="ftp-chart" data-source="ftp"></div>
     <p class="cv-note">Trait plein : tests validés. Pointillé : objectifs (poids cible 81 kg). FTP = 95 % de la puissance moyenne sur 20 min.</p>
   </section>
@@ -279,7 +285,7 @@ dash.calc('progression', {
     if (tests.length < 2) return [];
     const first = tests[0], prev = tests[tests.length - 2], last = tests[tests.length - 1];
     const m = (a, b) => (new Date(b) - new Date(a)) / (1000 * 60 * 60 * 24 * 30.44);
-    const r1 = (x) => Math.round(x * 10) / 10;
+    const r1 = (x) => Math.round(x * 10) / 10, r2 = (x) => Math.round(x * 100) / 100, r3 = (x) => Math.round(x * 1000) / 1000;
     const moisTotal = m(first.date, last.date);
     const moisRest = obj ? m(last.date, obj.date) : null;
     return [{
@@ -291,6 +297,11 @@ dash.calc('progression', {
       gain_requis: obj ? obj.ftp - last.ftp : null,
       mois_restants: moisRest != null ? r1(moisRest) : null,
       rythme_requis: obj ? r1((obj.ftp - last.ftp) / moisRest) : null,
+      wkg_prev: prev.wkg, wkg_depart: first.wkg,
+      gain_dernier_wkg: r2(last.wkg - prev.wkg), gain_total_wkg: r2(last.wkg - first.wkg),
+      gain_mois_wkg: r3((last.wkg - first.wkg) / moisTotal),
+      objectif_wkg: obj ? obj.wkg : null, gain_requis_wkg: obj ? r2(obj.wkg - last.wkg) : null,
+      rythme_requis_wkg: obj ? r3((obj.wkg - last.wkg) / moisRest) : null,
     }];
   },
 });
@@ -306,6 +317,10 @@ dash.calc('progression', {
     'k-mois': ['mois_dernier', fmt], 'k-moy': ['gain_mois', d3.format('+.1f')], 'k-tot': ['gain_total', d3.format('+d')],
     'k-dep': ['ftp_depart', String], 'k-cur2': ['ftp_actuel', String], 'k-moist': ['mois_total', fmt],
     'k-ftp': ['ftp_actuel', String], 'k-wkg': ['wkg_actuel', d3.format('.2f')],
+    't-objw': ['objectif_wkg', d3.format('.2f')], 't-reqw': ['rythme_requis_wkg', d3.format('.3f')], 't-moyw': ['gain_mois_wkg', d3.format('.3f')],
+    'k-gainw': ['gain_dernier_wkg', d3.format('+.2f')], 'k-prevw': ['wkg_prev', d3.format('.2f')], 'k-curw': ['wkg_actuel', d3.format('.2f')],
+    'k-moyw': ['gain_mois_wkg', d3.format('+.3f')], 'k-totw': ['gain_total_wkg', d3.format('+.2f')], 'k-depw': ['wkg_depart', d3.format('.2f')], 'k-cur2w': ['wkg_actuel', d3.format('.2f')],
+    'k-reqw': ['rythme_requis_wkg', d3.format('.3f')], 'k-restew': ['gain_requis_wkg', d3.format('+.2f')], 'k-objw': ['objectif_wkg', d3.format('.2f')], 'k-obj': ['objectif', String],
     'k-req': ['rythme_requis', fmt], 'k-reste': ['gain_requis', d3.format('+d')], 'k-moisr': ['mois_restants', fmt],
   };
   Object.entries(fields).forEach(([name, [f, fm]]) => {
@@ -320,14 +335,14 @@ dash.calc('progression', {
     if (d.status !== 'ok') { el.textContent = '—'; return; }
     const t = d.data.filter((r) => r.kind === 'test').sort((a, b) => a.date.localeCompare(b.date));
     const box = document.createElement('div'); box.className = 'kv';
-    t.forEach((r, i) => { const a = document.createElement('span'); a.textContent = r.label; const b = document.createElement('b'); b.textContent = r.ftp + ' W' + (i ? '  (' + d3.format('+d')(r.ftp - t[i - 1].ftp) + ')' : ''); box.append(a, b); });
+    t.forEach((r, i) => { const a = document.createElement('span'); a.textContent = r.label; const b = document.createElement('b'); b.textContent = r.wkg.toFixed(2) + ' W/kg' + (i ? ' (' + d3.format('+.2f')(r.wkg - t[i - 1].wkg) + ')' : '') + ' · ' + r.ftp + ' W'; box.append(a, b); });
     el.append(box);
   });
   dash.draw('k-verdict', (el) => {
     const p = dash.data('progression');
     const row = p.status === 'ok' && p.data && p.data[0];
     if (!row) { el.textContent = '—'; el.className = ''; return; }
-    const ok = row.gain_mois >= row.rythme_requis;
+    const ok = row.gain_mois_wkg >= row.rythme_requis_wkg;
     el.textContent = ok ? 'dans le rythme' : 'rythme actuel insuffisant';
     el.className = ok ? 'cv-good' : 'cv-warn';
   });
@@ -346,25 +361,25 @@ dash.draw('ftp-chart', (el) => {
   const W = Math.max(300, el.clientWidth), H = 280;
   const m = { t: 24, r: 44, b: 28, l: 40 };
   const x = d3.scaleUtc().domain(d3.extent(rows, (r) => r.t)).range([m.l, W - m.r]);
-  const y = d3.scaleLinear().domain([240, 335]).range([H - m.b, m.t]);
+  const y = d3.scaleLinear().domain([2.9, 4.1]).range([H - m.b, m.t]);
   const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`)
-    .attr('role', 'img').attr('aria-label', 'FTP mesurée aux tests depuis mai 2026, puis objectifs jusqu’en octobre 2027');
+    .attr('role', 'img').attr('aria-label', 'FTP en W/kg mesurée aux tests depuis mai 2026, puis objectifs jusqu’en octobre 2027');
   svg.append('g').selectAll('line').data(y.ticks(5)).join('line')
     .attr('x1', m.l).attr('x2', W - m.r).attr('y1', y).attr('y2', y).style('stroke', 'var(--cds-chart-grid)');
   svg.append('g').selectAll('text').data(y.ticks(5)).join('text')
-    .attr('x', m.l - 8).attr('y', (v) => y(v) + 4).attr('text-anchor', 'end').text((v) => v);
+    .attr('x', m.l - 8).attr('y', (v) => y(v) + 4).attr('text-anchor', 'end').text((v) => v.toFixed(1));
   const nt = W < 520 ? 4 : 8;
   svg.append('g').attr('transform', `translate(0,${H - m.b})`)
     .call(d3.axisBottom(x).ticks(nt).tickFormat(d3.utcFormat('%b %y')).tickSize(0).tickPadding(10))
     .call((g) => g.select('.domain').style('stroke', 'var(--cds-chart-axis)'));
-  const line = d3.line().x((r) => x(r.t)).y((r) => y(r.ftp));
+  const line = d3.line().x((r) => x(r.t)).y((r) => y(r.wkg));
   svg.append('path').datum(objs).attr('d', line).style('fill', 'none').style('stroke', dash.colors[0]).style('stroke-width', 2).style('stroke-dasharray', '5 5').style('opacity', .6);
   svg.append('path').datum(tests).attr('d', line).style('fill', 'none').style('stroke', dash.colors[0]).style('stroke-width', 2.5);
-  const pts = svg.append('g').selectAll('g').data(rows).join('g').attr('transform', (r) => `translate(${x(r.t)},${y(r.ftp)})`);
+  const pts = svg.append('g').selectAll('g').data(rows).join('g').attr('transform', (r) => `translate(${x(r.t)},${y(r.wkg)})`);
   pts.append('circle').attr('r', (r) => r.kind === 'test' ? 5 : 4)
     .style('fill', (r) => r.kind === 'test' ? dash.colors[0] : 'var(--color-bg)')
     .style('stroke', dash.colors[0]).style('stroke-width', 2);
-  pts.append('text').attr('y', -11).attr('text-anchor', 'middle').text((r) => r.ftp)
+  pts.append('text').attr('y', (r, i) => i === 0 ? 22 : -11).attr('text-anchor', 'middle').text((r) => r.wkg.toFixed(2))
     .style('fill', (r) => r.kind === 'test' ? 'var(--color-fg)' : 'var(--cds-text-secondary)');
   const tip = d3.select(el).append('div').attr('class', 'cv-tip').attr('hidden', '');
   const fd = d3.utcFormat('%d %b %Y');
@@ -372,10 +387,10 @@ dash.draw('ftp-chart', (el) => {
     .on('pointerenter', (ev, r) => {
       tip.attr('hidden', null).html('');
       tip.append('div').text(`${r.label}`);
-      tip.append('div').text(`${r.ftp} W · ${r.wkg.toFixed(2)} W/kg`);
+      tip.append('div').text(`${r.wkg.toFixed(2)} W/kg · ${r.ftp} W`);
       tip.append('span').text(fd(r.t));
       const tx = Math.min(Math.max(x(r.t) - 70, 0), el.clientWidth - 160);
-      tip.style('left', tx + 'px').style('top', (y(r.ftp) * el.clientWidth / W + 16) + 'px');
+      tip.style('left', tx + 'px').style('top', (y(r.wkg) * el.clientWidth / W + 16) + 'px');
     })
     .on('pointerleave', () => tip.attr('hidden', ''));
 });
