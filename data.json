@@ -314,10 +314,10 @@
   {
    "date": "2026-11-23",
    "type": "Z2",
-   "puissance": "watts à compléter",
+   "puissance": "197 W",
    "fc": "119 (max 158)",
-   "tss": null,
-   "note": "FC moyenne très basse pour une Z2 — pic à 158 au-dessus du plafond 148"
+   "tss": 43,
+   "note": "Puissance dans la cible. FC 119 de moyenne suspecte (ceinture ?) — max 158 au-dessus du plafond"
   },
   {
    "date": "2026-11-19",
