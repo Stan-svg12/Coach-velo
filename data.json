@@ -315,9 +315,9 @@
    "date": "2026-11-23",
    "type": "Z2",
    "puissance": "197 W",
-   "fc": "119 (max 158)",
+   "fc": "~128 (corrigée)",
    "tss": 43,
-   "note": "Puissance dans la cible. FC 119 de moyenne suspecte (ceinture ?) — max 158 au-dessus du plafond"
+   "note": "Ceinture bloquée à 90 bpm les 12 premières min. FC corrigée ~128 sur le reste : très bon découplage à 197 W. Max 158 à vérifier"
   },
   {
    "date": "2026-11-19",
