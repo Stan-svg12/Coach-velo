@@ -312,6 +312,14 @@
  ],
  "seances": [
   {
+   "date": "2026-11-26",
+   "type": "VO2 max",
+   "puissance": "4×4 min @290→298 W (prévu)",
+   "fc": "—",
+   "tss": 55,
+   "note": "Réalisée, bon ressenti. Watts et FC par répétition à compléter"
+  },
+  {
    "date": "2026-11-24",
    "type": "SST",
    "puissance": "3×12 min @245→260 W",
